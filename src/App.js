@@ -3,6 +3,7 @@ import Title from './components/title';
 import Form from './components/form';
 import Weather from './components/weather';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const apiKey = '8ddceeacaf8b95fe943c88fc8389dee0';
 
@@ -43,23 +44,33 @@ class App extends Component {
         country: undefined,
         humidity: undefined,
         description: undefined,
-        error: 'please enter a valid values'
+        error: 'please enter a valid values.'
       });
     }
   };
   render() {
     return (
-      <div>
-        <Title />
-        <Form onWeather={this.getWeather} />
-        <Weather
-          temperature={this.state.temperature}
-          city={this.state.city}
-          country={this.state.country}
-          humidity={this.state.humidity}
-          description={this.state.description}
-          error={this.state.error}
-        />
+      <div className='wrapper'>
+        <div className='main'>
+          <div className='container' style={{ width: '100%' }}>
+            <div className='row'>
+              <div className='col-xs-5 title-container'>
+                <Title />
+              </div>
+              <div className='col-xs-7 form-container'>
+                <Form onWeather={this.getWeather} />
+                <Weather
+                  temperature={this.state.temperature}
+                  city={this.state.city}
+                  country={this.state.country}
+                  humidity={this.state.humidity}
+                  description={this.state.description}
+                  error={this.state.error}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
